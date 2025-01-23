@@ -1,0 +1,46 @@
+<div class="login">
+  <form class="login__form" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <h2 class="login__title">Login</h2>
+    <div class="login__group">
+      <label for="username" class="login__label">Usuario</label>
+      <input
+        id="username"
+        type="text"
+        class="login__input"
+        formControlName="username"
+        placeholder="Ingresa tu usuario"
+        [class.is-invalid]="f.username.errors && f.username.touched"
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="f.username.errors && f.username.touched"
+      >
+        Usuario obligatorio
+      </div>
+    </div>
+    <div class="login__group">
+      <label for="password" class="login__label">Contraseña</label>
+      <input
+        id="password"
+        type="password"
+        class="login__input"
+        formControlName="password"
+        placeholder="Ingresa tu contraseña"
+        [class.is-invalid]="f.password.errors && f.password.touched"
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="f.password.errors && f.password.touched"
+      >
+        Contraseña obligatoria
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="login__button login__button--primary"
+      [disabled]="loginForm.invalid"
+    >
+      Iniciar sesión
+    </button>
+  </form>
+</div>
